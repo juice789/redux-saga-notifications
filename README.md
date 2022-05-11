@@ -19,7 +19,7 @@ npm install @juice789/redux-saga-notifications
 
 ### Usage
 
-see example app in demo/src folder
+See example app in demo/src folder
 
 ```javascript
 import {
@@ -44,10 +44,10 @@ const App = () => (
 
 ### Props
 
-| name   | type   | description                     |
-| ------ | ------ | ------------------------------- |
-| styles | object | (optional) custom styles object |
-| icons  | object | (optional) custom icons         |
+| name   | type   | description              |
+| ------ | ------ | ------------------------ |
+| styles | object | (optional) custom styles |
+| icons  | object | (optional) custom icons  |
 
 ### Dispatching a notification
 
@@ -106,7 +106,7 @@ The properties of the notification object:
 | buttons        | string                      | (optional) Show button controls under the notification. Options: 'yesNo', 'ok'                                                                      |
 | payload        | Redux action                | (optional) Action to be forwarded after confirming the notification (only if the buttons property is set to 'yesNo' or 'ok')                        |
 | blocking       | boolean                     | (optional) Show an overlay behind the notification                                                                                                  |
-| resolveActions | array of Redux action types | (optional) The notification will be active until any of the action types are dispatched, ignoring the duration property.                            |
+| resolveActions | array of Redux action types | (optional) The notification will be active until any of the action types are dispatched, ignoring the duration property                             |
 
 ### Create a custom notification style with custom icon
 
@@ -138,7 +138,7 @@ const action = {
 
 ### Override default styles
 
-3 default styles included: success, error, info
+Default styles included: 'success', 'error', 'info'.  
 The keys of the style type object may be: 'container', 'overlay', 'notification', 'inner', 'icon', 'label', 'controls', 'button'.
 
 ```javascript
