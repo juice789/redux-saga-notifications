@@ -6,6 +6,8 @@ import livereload from 'rollup-plugin-livereload'
 import replace from '@rollup/plugin-replace'
 import copy from 'rollup-plugin-copy'
 
+const watching = process.env.ROLLUP_WATCH
+
 export default {
   input: 'demo/src/index.js',
   output: {
@@ -26,17 +28,18 @@ export default {
     replace({
       preventAssignment: true,
       values: {
-        'process.env.NODE_ENV': "'development'"
+        'process.env.NODE_ENV': watching ? "'development'" : "'production'"
       }
     }),
     commonjs(),
-    serve({
-      open: true,
-      verbose: true,
-      contentBase: ['demo/dist'],
-      host: 'localhost',
-      port: 3000
-    }),
-    livereload({ watch: 'demo/dist' })
-  ]
+    watching &&
+      serve({
+        open: true,
+        verbose: true,
+        contentBase: ['demo/dist'],
+        host: 'localhost',
+        port: 3000
+      }),
+    watching && livereload({ watch: 'demo/dist' })
+  ].filter(Boolean)
 }
