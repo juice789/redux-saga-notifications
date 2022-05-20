@@ -23,7 +23,7 @@ See example app in demo/src folder
 
 ```javascript
 import {
-  saga as notificationsSaga,
+  saga as notificationSaga,
   reducer as notificationReducer
 } from '@juice789/redux-saga-notifications'
 
@@ -111,7 +111,7 @@ The properties of the notification object:
 ### Create a custom notification style with custom icon
 
 ```javascript
-import Notification, {
+import Notifications, {
   createNotificationStyle
 } from '@juice789/redux-saga-notifications'
 
@@ -131,7 +131,8 @@ const action = {
   notification: {
     type: 'customStyle1',
     label: 'Test notification',
-    id: Date.now().toString()
+    id: Date.now().toString(),
+    duration: 5000
   }
 }
 ```
@@ -142,7 +143,7 @@ Default styles included: 'success', 'error', 'info'.
 The keys of the style type object may be: 'container', 'overlay', 'notification', 'inner', 'icon', 'label', 'controls', 'button'.
 
 ```javascript
-import Notification, {
+import Notifications, {
   createNotificationStyle,
   notificationDefaultTheme
 } from '@juice789/redux-saga-notifications'
@@ -157,11 +158,8 @@ const styles = {
     ),
     label: (defaults) => ({
       ...defaults,
-      color: 'pink'
-    }),
-    button: (defaults) => ({
-      ...defaults,
-      background: 'pink'
+      color: 'black',
+      fontSize: '20px'
     })
   }
 }
@@ -183,9 +181,9 @@ Override default icons.
 
 ```javascript
 const icons = {
-  success: <FontAwesomeIcon icon={faCheckTriangle} />, //use an icon from your favourite icon library (font awesome, line awesome etc.)
+  success: <FontAwesomeIcon icon={faAmbulance} />, //use an icon from your favourite icon library (font awesome, line awesome etc.)
   error: null, //don't use icon
-  info: <FontAwesomeIcon icon={faExclamationTriangle} />,
+  info: <FontAwesomeIcon icon={faAngry} />,
   customAwesomeStyle1: <>🐼</>
 }
 ```
