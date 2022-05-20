@@ -103,6 +103,7 @@ const button = ({ half }) => ({
   fontSize: '12px',
   cursor: 'pointer',
   fontSize: '12px',
+  color: '#ededee',
   width: half ? '50%' : '100%'
 })
 
