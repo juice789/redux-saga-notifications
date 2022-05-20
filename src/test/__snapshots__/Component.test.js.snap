@@ -128,6 +128,7 @@ exports[`should show a confirmation notification 1`] = `
   transition: background 0.2s ease;
   font-size: 12px;
   cursor: pointer;
+  color: #ededee;
 }
 
 <div
@@ -352,6 +353,7 @@ exports[`should show a yes/no notification 1`] = `
   transition: background 0.2s ease;
   font-size: 12px;
   cursor: pointer;
+  color: #ededee;
 }
 
 <div
