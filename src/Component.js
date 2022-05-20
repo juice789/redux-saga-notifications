@@ -43,7 +43,7 @@ const NotificationsComponent = ({ styles, icons }) => {
   return (
     <Container>
       {isOverlay ? <Overlay /> : null}
-      {notifications.map(({ label, id, payload, type, buttons, duration }) => (
+      {notifications.map(({ label, id, payload, type, buttons, duration = 5000 }) => (
         <Notification
           timer={buttons === undefined}
           key={id}
