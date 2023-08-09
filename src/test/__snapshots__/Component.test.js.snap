@@ -5,6 +5,7 @@ exports[`default component, no notifications 1`] = `
   position: fixed;
   bottom: 15px;
   width: 100%;
+  height: 0px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -20,11 +21,21 @@ exports[`default component, no notifications 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  z-index: 10;
+}
+
+.c1 {
+  position: absolute;
+  bottom: 0;
 }
 
 <div
   class="c0"
-/>
+>
+  <div
+    class="c1"
+  />
+</div>
 `;
 
 exports[`should show a confirmation notification 1`] = `
@@ -32,6 +43,7 @@ exports[`should show a confirmation notification 1`] = `
   position: fixed;
   bottom: 15px;
   width: 100%;
+  height: 0px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -47,9 +59,15 @@ exports[`should show a confirmation notification 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  z-index: 10;
 }
 
 .c1 {
+  position: absolute;
+  bottom: 0;
+}
+
+.c2 {
   position: relative;
   overflow: hidden;
   margin: 15px 15px 0 15px;
@@ -60,7 +78,6 @@ exports[`should show a confirmation notification 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  z-index: 11;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -69,20 +86,19 @@ exports[`should show a confirmation notification 1`] = `
   animation: gtonke 0.2s ease none,iHtkXv 0.2s ease none,gDsCMX 5000ms linear none;
 }
 
-.c2 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   min-height: 30px;
-  z-index: 13;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
 }
 
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -101,15 +117,14 @@ exports[`should show a confirmation notification 1`] = `
   font-weight: bold;
 }
 
-.c4 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  z-index: 13;
 }
 
-.c5 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -143,16 +158,20 @@ exports[`should show a confirmation notification 1`] = `
       <div
         class="c3"
       >
-        Test notification
+        <div
+          class="c4"
+        >
+          Test notification
+        </div>
       </div>
-    </div>
-    <div
-      class="c4"
-    >
       <div
         class="c5"
       >
-        Ok
+        <div
+          class="c6"
+        >
+          Ok
+        </div>
       </div>
     </div>
   </div>
@@ -164,6 +183,7 @@ exports[`should show a notification 1`] = `
   position: fixed;
   bottom: 15px;
   width: 100%;
+  height: 0px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -179,9 +199,15 @@ exports[`should show a notification 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  z-index: 10;
 }
 
 .c1 {
+  position: absolute;
+  bottom: 0;
+}
+
+.c2 {
   position: relative;
   overflow: hidden;
   margin: 15px 15px 0 15px;
@@ -192,7 +218,6 @@ exports[`should show a notification 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  z-index: 11;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -201,20 +226,19 @@ exports[`should show a notification 1`] = `
   animation: gtonke 0.2s ease none,iHtkXv 0.2s ease none,gDsCMX 5000ms linear none;
 }
 
-.c2 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   min-height: 30px;
-  z-index: 13;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
 }
 
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -245,7 +269,11 @@ exports[`should show a notification 1`] = `
       <div
         class="c3"
       >
-        Test notification
+        <div
+          class="c4"
+        >
+          Test notification
+        </div>
       </div>
     </div>
   </div>
@@ -257,6 +285,7 @@ exports[`should show a yes/no notification 1`] = `
   position: fixed;
   bottom: 15px;
   width: 100%;
+  height: 0px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -272,9 +301,15 @@ exports[`should show a yes/no notification 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  z-index: 10;
 }
 
 .c1 {
+  position: absolute;
+  bottom: 0;
+}
+
+.c2 {
   position: relative;
   overflow: hidden;
   margin: 15px 15px 0 15px;
@@ -285,7 +320,6 @@ exports[`should show a yes/no notification 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  z-index: 11;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -294,20 +328,19 @@ exports[`should show a yes/no notification 1`] = `
   animation: gtonke 0.2s ease none,iHtkXv 0.2s ease none,gDsCMX 5000ms linear none;
 }
 
-.c2 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   min-height: 30px;
-  z-index: 13;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
 }
 
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -326,15 +359,14 @@ exports[`should show a yes/no notification 1`] = `
   font-weight: bold;
 }
 
-.c4 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  z-index: 13;
 }
 
-.c5 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -368,21 +400,25 @@ exports[`should show a yes/no notification 1`] = `
       <div
         class="c3"
       >
-        Test notification
-      </div>
-    </div>
-    <div
-      class="c4"
-    >
-      <div
-        class="c5"
-      >
-        Yes
+        <div
+          class="c4"
+        >
+          Test notification
+        </div>
       </div>
       <div
         class="c5"
       >
-        No
+        <div
+          class="c6"
+        >
+          Yes
+        </div>
+        <div
+          class="c6"
+        >
+          No
+        </div>
       </div>
     </div>
   </div>

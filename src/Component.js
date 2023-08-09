@@ -1,15 +1,16 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch, shallowEqual } from 'react-redux'
 
 import {
   Container,
+  ContainerInner,
   Overlay,
   Notification,
-  Inner,
+  NotificationInner,
   Button,
   Icon,
   Label,
-  Controls
+  ButtonsOuter
 } from './styles'
 
 import defaultStyle from './defaultStyle'
@@ -19,7 +20,8 @@ const NotificationsComponent = ({ styles, icons }) => {
   const dispatch = useDispatch()
 
   const notifications = useSelector(({ notificationReducer }) =>
-    Object.values(notificationReducer)
+    Object.values(notificationReducer),
+    shallowEqual
   )
 
   const easyDispatch = (props) => () => {
@@ -41,51 +43,53 @@ const NotificationsComponent = ({ styles, icons }) => {
 
   const isOverlay = notifications.find(({ blocking }) => Boolean(blocking))
   return (
-    <Container>
-      {isOverlay ? <Overlay /> : null}
-      {notifications.map(({ label, id, payload, type, buttons, duration = 5000 }) => (
-        <Notification
-          timer={buttons === undefined}
-          key={id}
-          styles={_styles[type]}
-          duration={duration}
-        >
-          <Inner styles={_styles[type]}>
-            {_icons[type] ? (
-              <Icon styles={_styles[type]}>{_icons[type]}</Icon>
+    <Container styles={_styles}>
+      <ContainerInner styles={_styles}>
+        {isOverlay ? <Overlay styles={_styles} /> : null}
+        {notifications.map(({ label, id, payload, type, buttons, duration = 5000 }) => (
+          <Notification
+            timer={buttons === undefined}
+            key={id}
+            styles={_styles[type]}
+            duration={duration}
+          >
+            <NotificationInner styles={_styles[type]}>
+              {_icons[type] ? (
+                <Icon styles={_styles[type]}>{_icons[type]}</Icon>
+              ) : null}
+              <Label styles={_styles[type]}>{label}</Label>
+            </NotificationInner>
+            {buttons === 'yesNo' ? (
+              <ButtonsOuter styles={_styles[type]}>
+                <Button
+                  styles={_styles[type]}
+                  half={true}
+                  onClick={easyDispatch({ id, payload })}
+                >
+                  Yes
+                </Button>
+                <Button
+                  styles={_styles[type]}
+                  half={true}
+                  onClick={easyDispatch({ id })}
+                >
+                  No
+                </Button>
+              </ButtonsOuter>
             ) : null}
-            <Label styles={_styles[type]}>{label}</Label>
-          </Inner>
-          {buttons === 'yesNo' ? (
-            <Controls styles={_styles[type]}>
-              <Button
-                styles={_styles[type]}
-                half={true}
-                onClick={easyDispatch({ id, payload })}
-              >
-                Yes
-              </Button>
-              <Button
-                styles={_styles[type]}
-                half={true}
-                onClick={easyDispatch({ id })}
-              >
-                No
-              </Button>
-            </Controls>
-          ) : null}
-          {buttons === 'ok' ? (
-            <Controls styles={_styles[type]}>
-              <Button
-                styles={_styles[type]}
-                onClick={easyDispatch({ id, payload })}
-              >
-                Ok
-              </Button>
-            </Controls>
-          ) : null}
-        </Notification>
-      ))}
+            {buttons === 'ok' ? (
+              <ButtonsOuter styles={_styles[type]}>
+                <Button
+                  styles={_styles[type]}
+                  onClick={easyDispatch({ id, payload })}
+                >
+                  Ok
+                </Button>
+              </ButtonsOuter>
+            ) : null}
+          </Notification>
+        ))}
+      </ContainerInner>
     </Container>
   )
 }

@@ -1,4 +1,4 @@
-export function reducer(state = {}, action) {
+export function notificationReducer(state = {}, action) {
   switch (action.type) {
     case 'NOTIFICATION_PUSH':
       return {
