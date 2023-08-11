@@ -20,7 +20,7 @@ function* forwardConfirmation({ id, payload }) {
   yield put({ type: 'NOTIFICATION_POP', id })
 }
 
-export function* saga() {
+export function* notificationSaga() {
   yield takeEvery('NOTIFICATION_PUSH', popNotification)
   yield takeEvery('NOTIFICATION_CONFIRMATION', forwardConfirmation)
 }

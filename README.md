@@ -23,8 +23,8 @@ See example app in demo/src folder
 
 ```javascript
 import {
-  saga as notificationSaga,
-  reducer as notificationReducer
+  notificationSaga,
+  notificationReducer
 } from '@juice789/redux-saga-notifications'
 
 //add the saga inside rootSaga
@@ -55,7 +55,7 @@ const App = () => (
 store.dispatch({
   type: 'NOTIFICATION_PUSH',
   notification: {
-    id: Date.now().toString(),
+    id: Date.now(),
     type: 'success',
     label: 'Test notification 1',
     duration: 10000
@@ -69,7 +69,7 @@ store.dispatch({
 store.dispatch({
   type: 'NOTIFICATION_PUSH',
   notification: {
-    id: Date.now().toString(),
+    id: Date.now(),
     type: 'error',
     label: 'Test notification 2',
     buttons: 'ok' //valid options: 'yesNo' or 'ok'
@@ -83,7 +83,7 @@ store.dispatch({
 store.dispatch({
   type: 'NOTIFICATION_PUSH',
   notification: {
-    id: Date.now().toString(),
+    id: Date.now(),
     type: 'info',
     label: 'Test notification 3',
     payload: {
@@ -108,7 +108,7 @@ The properties of the notification object:
 | blocking       | boolean                     | (optional) Show an overlay behind the notification                                                                                                  |
 | resolveActions | array of Redux action types | (optional) The notification will be active until any of the action types are dispatched, ignoring the duration property                             |
 
-### Create a custom notification style with custom icon
+### Complete styling example
 
 ```javascript
 import Notifications, {
@@ -116,45 +116,53 @@ import Notifications, {
 } from '@juice789/redux-saga-notifications'
 
 const styles = {
-  customStyle1: createNotificationStyle('purple', 'fuchsia')
-}
-
-const icons = {
-  customStyle1: <>🐼</>
-}
-
-const App = () => <Notifications styles={styles} icons={icons} />
-
-//dispatch the following action to show a notification with the custom style:
-const action = {
-  type: 'NOTIFICATION_PUSH',
-  notification: {
-    type: 'customStyle1',
-    label: 'Test notification',
-    id: Date.now().toString(),
-    duration: 5000
-  }
-}
-```
-
-### Override default styles
-
-Default styles included: 'success', 'error', 'info'.  
-The keys of the style type object may be: 'container', 'overlay', 'notification', 'inner', 'icon', 'label', 'controls', 'button'.
-
-```javascript
-import Notifications, {
-  createNotificationStyle,
-  notificationDefaultTheme
-} from '@juice789/redux-saga-notifications'
-
-//notificationDefaultTheme includes the default primary and secondary colors of the default styles
-
-const styles = {
+  container: (defaults) => ({
+    ...defaults,
+    alignItems: 'flex-end'
+  }),
+  containerInner: (defaults) => ({
+    ...defaults,
+    bottom: '45px'
+  }),
+  overlay: (defaults) => ({
+    ...defaults,
+    background: 'darkgray'
+  }),
+  //add a custom notification type and style it with createNotificationStyle
+  customStyle1: createNotificationStyle('purple', 'fuchsia', true),//returns a complete notification style object, just set the colors
+  //or set every style property manually
+  customStyle2: {
+    notification: (defaults) => ({
+      ...defaults,
+      background: 'burlywood'
+    }),
+    notificationInner: (defaults) => ({
+      ...defaults,
+      minHeight: '100px'
+    }),
+    icon: (defaults) => ({
+      ...defaults,
+      fontSize: '40px',
+    }),
+    label: (defaults) => ({
+      ...defaults,
+      color: 'brown'
+    }),
+    buttonsOuter: (defaults) => ({
+      ...defaults,
+      background: 'red'
+    }),
+    button: (defaults) => ({
+      ...defaults,
+      fontSize: '20px'
+    })
+  },
+    //overriding the default 'error' notification type
   error: {
     ...createNotificationStyle(
-      notificationDefaultTheme.error.primaryColor,
-      notificationDefaultTheme.error.secondaryColor
+      'red', //primary color
+      'blue', //secondary color
+      true //set to false to disable animations
     ),
     label: (defaults) => ({
       ...defaults,
@@ -164,28 +172,15 @@ const styles = {
   }
 }
 
-const App = () => <Notifications styles={styles} />
-```
-
-#### createNotificationStyle function arguments
-
-| name | type      | description                                  |
-| ---- | --------- | -------------------------------------------- |
-| 1    | css value | primary color                                |
-| 2    | css value | secondary color                              |
-| 3    | boolean   | disable background animation (default false) |
-
-### Icons
-
-Override default icons.
-
-```javascript
 const icons = {
-  success: <FontAwesomeIcon icon={faAmbulance} />, //use an icon from your favourite icon library (font awesome, line awesome etc.)
-  error: null, //don't use icon
-  info: <FontAwesomeIcon icon={faAngry} />,
-  customAwesomeStyle1: <>🐼</>
+  customStyle1: <>🐼</>,
+  customStyle2: <>🥒</>,
+  success: null, //don't use icon for success notification type,
+  error: <FontAwesomeIcon icon={faAmbulance} /> //use an icon from your favourite icon library (font awesome, line awesome etc.)
 }
+
+const App = () => <Notifications styles={styles} icons={icons}  />
+
 ```
 
 ### License

@@ -1,4 +1,4 @@
-import { reducer } from '../reducer'
+import { notificationReducer } from '../reducer'
 
 describe('reducer test', () => {
   let initialState
@@ -13,7 +13,7 @@ describe('reducer test', () => {
   })
 
   it('should return the inital state', () => {
-    expect(reducer(initialState, { type: 'TEST_ACTION' })).toEqual(initialState)
+    expect(notificationReducer(initialState, { type: 'TEST_ACTION' })).toEqual(initialState)
   })
   it('should add a notification', () => {
     const action = {
@@ -24,7 +24,7 @@ describe('reducer test', () => {
       1: { id: '1', label: 'test 1' },
       2: { id: '2', label: 'test 2' }
     }
-    expect(reducer(initialState, action)).toEqual(expected)
+    expect(notificationReducer(initialState, action)).toEqual(expected)
   })
   it('should add a notification', () => {
     const action = {
@@ -32,6 +32,6 @@ describe('reducer test', () => {
       id: '1'
     }
     const expected = {}
-    expect(reducer(initialState, action)).toEqual(expected)
+    expect(notificationReducer(initialState, action)).toEqual(expected)
   })
 })

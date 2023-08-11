@@ -31,10 +31,17 @@ const container = () => ({
   position: 'fixed',
   bottom: '15px',
   width: '100%',
+  height: '0px',
   display: 'flex',
   justifyContent: 'center',
   flexDirection: 'column',
-  alignItems: 'center'
+  alignItems: 'center',
+  zIndex: 10
+})
+
+const containerInner = () => ({
+  position: 'absolute',
+  bottom: '0'
 })
 
 const overlay = () => ({
@@ -44,8 +51,7 @@ const overlay = () => ({
   left: 0,
   right: 0,
   background: 'black',
-  opacity: 0.7,
-  zIndex: 10
+  opacity: 0.7
 })
 
 const notification = ({ duration }) => ({
@@ -54,17 +60,15 @@ const notification = ({ duration }) => ({
   margin: '15px 15px 0 15px',
   display: 'flex',
   flexDirection: 'column',
-  zIndex: 11,
   userSelect: 'none',
   animation: css`
     ${moveup} 0.2s ease none, ${show} 0.2s ease none, ${slidebg} ${duration}ms linear none
   `
 })
 
-const inner = () => ({
+const notificationInner = () => ({
   display: 'flex',
   minHeight: '30px',
-  zIndex: 13,
   alignItems: 'center'
 })
 
@@ -88,9 +92,8 @@ const label = () => ({
   fontWeight: 'bold'
 })
 
-const controls = () => ({
-  display: 'flex',
-  zIndex: 13
+const buttonsOuter = () => ({
+  display: 'flex'
 })
 
 const button = ({ half }) => ({
@@ -109,12 +112,13 @@ const button = ({ half }) => ({
 
 export const componentStyles = {
   container,
+  containerInner,
   overlay,
   notification,
-  inner,
+  notificationInner,
   icon,
   label,
-  controls,
+  buttonsOuter,
   button
 }
 
@@ -126,10 +130,11 @@ const makeComponent = (key) =>
   )
 
 export const Container = makeComponent('container')
+export const ContainerInner = makeComponent('containerInner')
 export const Overlay = makeComponent('overlay')
 export const Notification = makeComponent('notification')
-export const Inner = makeComponent('inner')
+export const NotificationInner = makeComponent('notificationInner')
 export const Icon = makeComponent('icon')
 export const Label = makeComponent('label')
-export const Controls = makeComponent('controls')
+export const ButtonsOuter = makeComponent('buttonsOuter')
 export const Button = makeComponent('button')

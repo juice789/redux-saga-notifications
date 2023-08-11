@@ -1,5 +1,5 @@
 import { expectSaga } from 'redux-saga-test-plan'
-import { saga } from '../saga'
+import { notificationSaga } from '../saga'
 import { sagaRunner, getActions } from './helpers'
 
 describe('popping a notification', () => {
@@ -24,7 +24,7 @@ describe('popping a notification', () => {
         id: 1
       }
     ]
-    const testSaga = expectSaga(sagaRunner(saga))
+    const testSaga = expectSaga(sagaRunner(notificationSaga))
 
     testSaga.run(false).then((storeState) => {
       try {
@@ -51,7 +51,7 @@ describe('popping a notification', () => {
     }
 
     const expectedActions = []
-    const testSaga = expectSaga(sagaRunner(saga))
+    const testSaga = expectSaga(sagaRunner(notificationSaga))
 
     testSaga.run(false).then((storeState) => {
       try {
@@ -83,7 +83,7 @@ describe('popping a notification', () => {
         id: 1
       }
     ]
-    const testSaga = expectSaga(sagaRunner(saga))
+    const testSaga = expectSaga(sagaRunner(notificationSaga))
 
     testSaga.run(false).then((storeState) => {
       try {
@@ -108,7 +108,7 @@ describe('popping a notification', () => {
     }
 
     const expectedActions = []
-    const testSaga = expectSaga(sagaRunner(saga))
+    const testSaga = expectSaga(sagaRunner(notificationSaga))
 
     testSaga.run(false).then((storeState) => {
       try {
@@ -135,7 +135,7 @@ describe('popping a notification', () => {
     }
 
     const expectedActions = []
-    const testSaga = expectSaga(sagaRunner(saga))
+    const testSaga = expectSaga(sagaRunner(notificationSaga))
 
     testSaga.run(false).then((storeState) => {
       try {
@@ -168,7 +168,7 @@ describe('confirming a notification', () => {
         id: 1
       }
     ]
-    const testSaga = expectSaga(sagaRunner(saga))
+    const testSaga = expectSaga(sagaRunner(notificationSaga))
 
     testSaga.run(false).then((storeState) => {
       try {
