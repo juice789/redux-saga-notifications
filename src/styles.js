@@ -41,7 +41,10 @@ const container = () => ({
 
 const containerInner = () => ({
   position: 'absolute',
-  bottom: '0'
+  bottom: '0',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center'
 })
 
 const overlay = () => ({
