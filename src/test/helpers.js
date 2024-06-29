@@ -1,5 +1,4 @@
 import { fork, take, cancel } from 'redux-saga/effects'
-import { compose, map, path, filter, propEq, prop } from 'ramda'
 
 import React from 'react'
 import { render as rtlRender } from '@testing-library/react'
@@ -14,11 +13,9 @@ export const sagaRunner = (fn) =>
     yield cancel(task)
   }
 
-export const getActions = compose(
-  map(path(['payload', 'action'])),
-  filter(propEq('type', 'PUT')),
-  prop('allEffects')
-)
+export const getActions = ({ allEffects }) => allEffects
+  .filter(({ type }) => type === 'PUT')
+  .map(({ payload }) => payload.action)
 
 const render = (
   ui,

@@ -9,14 +9,14 @@ export const createNotificationStyle = (
   button: (defaults) => ({
     ...defaults,
     boxShadow: `inset 0 0 20px ${secondaryColor}`,
-    [':hover']: {
+    ['&:hover']: {
       background: secondaryColor
     }
   }),
-  notification: (defaults, { timer }) => ({
+  notification: (defaults, { $timer }) => ({
     ...defaults,
     background:
-      animateBackground && timer
+      animateBackground && $timer
         ? `linear-gradient(90deg, ${secondaryColor} 50%, ${primaryColor} 50%)`
         : primaryColor,
     backgroundSize: '200% auto'
