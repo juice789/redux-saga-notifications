@@ -57,7 +57,7 @@ const overlay = () => ({
   opacity: 0.7
 })
 
-const notification = ({ duration }) => ({
+const notification = ({ $duration }) => ({
   position: 'relative',
   overflow: 'hidden',
   margin: '15px 15px 0 15px',
@@ -65,7 +65,7 @@ const notification = ({ duration }) => ({
   flexDirection: 'column',
   userSelect: 'none',
   animation: css`
-    ${moveup} 0.2s ease none, ${show} 0.2s ease none, ${slidebg} ${duration}ms linear none
+    ${moveup} 0.2s ease none, ${show} 0.2s ease none, ${slidebg} ${$duration}ms linear none
   `
 })
 
@@ -99,7 +99,7 @@ const buttonsOuter = () => ({
   display: 'flex'
 })
 
-const button = ({ half }) => ({
+const button = ({ $half }) => ({
   display: 'flex',
   width: '50%',
   justifyContent: 'center',
@@ -110,7 +110,7 @@ const button = ({ half }) => ({
   cursor: 'pointer',
   fontSize: '12px',
   color: '#ededee',
-  width: half ? '50%' : '100%'
+  width: $half ? '50%' : '100%'
 })
 
 export const componentStyles = {
@@ -127,8 +127,8 @@ export const componentStyles = {
 
 const makeComponent = (key) =>
   styled.div((props) =>
-    props?.styles?.[key]
-      ? css(props.styles[key](componentStyles[key](props), props))
+    props?.$styles?.[key]
+      ? css(props.$styles[key](componentStyles[key](props), props))
       : css(componentStyles[key](props))
   )
 

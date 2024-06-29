@@ -159,7 +159,7 @@ export const Input = styled.input`
   border-radius: 0.2rem;
   padding-left: 0.6rem;
   font-weight: 300 !important;
-  :hover {
+  &:hover {
     border-color: #6e66a6;
   }
 `
@@ -181,7 +181,7 @@ export const Button = styled.div`
   border-radius: 0.3rem;
   font-size: 0.9rem;
   width: 100%;
-  :hover {
+  &:hover {
     background: #585285;
   }
 `
