@@ -1,6 +1,6 @@
 {
   "name": "@juice789/redux-saga-notifications",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "redux saga notification component",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -8,7 +8,8 @@
     "test": "jest",
     "start": "rollup -c rollup.demo.config.mjs -w",
     "build-demo": "rollup -c rollup.demo.config.mjs",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "build_iconless": "rollup -c --environment iconless"
   },
   "keywords": [
     "react",
