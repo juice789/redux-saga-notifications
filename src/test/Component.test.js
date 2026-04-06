@@ -7,7 +7,7 @@ import { render, screen } from './helpers'
 import 'jest-styled-components'
 import '@testing-library/jest-dom'
 
-import Notifications from '../Component'
+import Notifications from '../index'
 
 it('default component, no notifications', () => {
   const { container } = render(<Notifications />)

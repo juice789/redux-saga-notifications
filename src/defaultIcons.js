@@ -1,15 +1,10 @@
 import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faCheckCircle,
-  faTimesCircle,
-  faExclamationCircle
-} from '@fortawesome/free-solid-svg-icons'
+import { FaCheckCircle, FaTimesCircle, FaExclamationCircle } from 'react-icons/fa'
 
 const defaultIcons = {
-  success: <FontAwesomeIcon icon={faCheckCircle} />,
-  error: <FontAwesomeIcon icon={faTimesCircle} />,
-  info: <FontAwesomeIcon icon={faExclamationCircle} />
+  success: <FaCheckCircle />,
+  error: <FaTimesCircle />,
+  info: <FaExclamationCircle />
 }
 
 export default defaultIcons
