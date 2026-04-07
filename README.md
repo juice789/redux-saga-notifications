@@ -92,6 +92,34 @@ const App = () => (
 
 Theme colors are applied per notification type. The `styles` prop still takes precedence over theme values, and theme values take precedence over built-in defaults.
 
+Alternatively, you can use `createNotificationStyle` directly in the `styles` prop, sourcing colors from any theme context — not just styled-components `ThemeProvider`. This also lets you override individual sub-styles on top:
+
+```jsx
+import { useContext } from 'react'
+import { ThemeContext } from './context'
+import Notifications, { createNotificationStyle } from '@juice789/redux-saga-notifications/themed'
+
+const App = () => {
+  const { theme } = useContext(ThemeContext)
+
+  return (
+    <Notifications
+      styles={{
+        success: {
+          ...createNotificationStyle(theme.mainColor, theme.mainColorFade),
+          label: (defaults) => ({
+            ...defaults,
+            color: ({ theme }) => theme.background1
+          })
+        }
+      }}
+    />
+  )
+}
+```
+
+`createNotificationStyle(primaryColor, secondaryColor, animateBackground?)` returns a complete notification style object for a given type. Individual sub-styles (`notification`, `label`, `icon`, `button`, etc.) can be overridden on top of it as shown above.
+
 ### Props
 
 | name   | type   | description              |
